@@ -2,6 +2,7 @@ from Domain.rezervare import creeazaRezervare, getId, getNume, getPret, getCheck
 
 
 def testDomain():
+    '''testeaza daca aduga corect o rezervare'''
     rezervare=creeazaRezervare('1', 'Prigoana', 'economy', 200, 'Da')
     assert getId(rezervare) == '1'
     assert getNume(rezervare) == "Prigoana"
