@@ -1,4 +1,5 @@
 from Domain.rezervare import toString
+from Logic.Ieftinire import IeftinirePret
 from Logic.clasaSuperioara import UpgradeClasa
 from Logic.crud import adaugaRezervare, modificaRezervare, stergeRezervare
 
@@ -11,6 +12,8 @@ def printMenu():
     print("2.Sterge rezervare.")
     print('3.Modifica rezervarea')
     print("4.Trecerea la o clasa superioara a unui client, dupa nume.")
+    print("5. Ieftinirea tuturor rezervărilor la care s-a făcut checkin cu un procentaj citit.")
+
     print("a.Afiseaza toate rezervarile.")
     print("x.Iesire.")
 
@@ -78,6 +81,15 @@ def runMenu(lista):
                 print("Upgrade-ul s-a realizat.")
             except ValueError as ve:
                 print("Eroare", ve)
+        elif optiune == '5':
+            try:
+                procent=float(input("Dati procentul cu care vreti sa se ieftineasca rezervarea:"))
+                lista=IeftinirePret(lista,procent)
+                print("Preturile au fost reduse.")
+            except ValueError as vee:
+                print("Eroare",vee)
+
+
         elif optiune == 'x':
             break
         else:
