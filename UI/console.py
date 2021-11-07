@@ -1,4 +1,5 @@
 from Domain.rezervare import toString
+from Logic.clasaSuperioara import UpgradeClasa
 from Logic.crud import adaugaRezervare, modificaRezervare, stergeRezervare
 
 
@@ -9,6 +10,7 @@ def printMenu():
     print("1.Adauga rezervare.")
     print("2.Sterge rezervare.")
     print('3.Modifica rezervarea')
+    print("4.Trecerea la o clasa superioara a unui client, dupa nume.")
     print("a.Afiseaza toate rezervarile.")
     print("x.Iesire.")
 
@@ -69,6 +71,13 @@ def runMenu(lista):
             lista=uiModificaRezervare(lista)
         elif optiune == 'a':
             showAll(lista)
+        elif optiune == '4':
+            try:
+                numele=input("Dati numele clientului: ")
+                lista=UpgradeClasa(lista,numele)
+                print("Upgrade-ul s-a realizat.")
+            except ValueError as ve:
+                print("Eroare", ve)
         elif optiune == 'x':
             break
         else:
