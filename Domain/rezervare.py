@@ -8,13 +8,7 @@ def creeazaRezervare(id, nume, clasa, pret, checkin):
     :param checkin: si-a facut sau nu checkin-ul pasagerul
     :return: un dictionar cu datele despre rezervare
     '''
-    return {
-        'id': id,
-        'nume': nume,
-        'clasa': clasa,
-        'pret': pret,
-        'checkin': checkin
-    }
+    return [('id', id,),('nume', nume,), ('clasa', clasa,), ('pret', pret,),('checkin',checkin,)]
 
 
 def getId(rezervare):
@@ -23,7 +17,7 @@ def getId(rezervare):
     :param rezervare: dictionar de tipuil rezervare
     :return: id-ul rezervarii
     '''
-    return rezervare['id']
+    return rezervare[0][1]
 
 
 def getNume(rezervare):
@@ -32,7 +26,7 @@ def getNume(rezervare):
     :param rezervare: dictionar de tipul rezervare
     :return: numele rezervarii
     '''
-    return rezervare['nume']
+    return rezervare[1][1]
 
 
 def getClasa(rezervare):
@@ -41,7 +35,7 @@ def getClasa(rezervare):
     :param rezervare: dictionar de tipul rezervare
     :return: clasa rezervarii (economy, economy plus, business)
     '''
-    return rezervare['clasa']
+    return rezervare[2][1]
 
 
 def getPret(rezervare):
@@ -50,7 +44,7 @@ def getPret(rezervare):
     :param rezervare: dictionar de tipul rezervare
     :return: pretul rezervarii
     '''
-    return rezervare['pret']
+    return rezervare[3][1]
 
 
 def getCheckin(rezervare):
@@ -59,7 +53,7 @@ def getCheckin(rezervare):
     :param rezervare: dictionar de tipul rezervare
     :return: da/nu
     '''
-    return rezervare['checkin']
+    return rezervare[4][1]
 
 
 def toString(rezervare):
