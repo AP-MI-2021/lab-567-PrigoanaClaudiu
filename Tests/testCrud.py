@@ -1,7 +1,7 @@
 from Domain.rezervare import getId, getNume, getClasa, getPret, getCheckin, creeazaRezervare
 from Logic.Ieftinire import IeftinirePret
 from Logic.clasaSuperioara import UpgradeClasa
-from Logic.crud import adaugaRezervare, getById, stergeRezervare
+from Logic.crud import adaugaRezervare, getById, stergeRezervare, modificaRezervare
 
 
 def testAdaugaRezervare():
@@ -24,6 +24,23 @@ def testStergeRezervare():
     lista = stergeRezervare('3', lista)
     assert len(lista) == 1
     assert getById('2', lista) is not None
+
+
+def testgetById():
+    '''testeaza daca gaseste o anumita rezervare'''
+    lista= adaugaRezervare('1', 'Prigoana', 'economy', 200, 'Da', [])
+    assert getById('1',lista) is not None
+
+
+def testModificare():
+    '''testeaza daca modifica corect o rezervare'''
+    lista=adaugaRezervare('1', 'Prigoana', 'economy', 200, 'Da', [])
+    lista= modificaRezervare('1', 'Prigoana', 'economy plus', 250, 'Nu', lista)
+    assert getId(getById("1", lista)) == '1'
+    assert getNume(getById("1", lista)) == "Prigoana"
+    assert getClasa(getById("1", lista)) == 'economy plus'
+    assert getPret(getById("1", lista)) == 250
+    assert getCheckin(getById("1", lista)) == "Nu"
 
 
 def testClasaSuperioara():
