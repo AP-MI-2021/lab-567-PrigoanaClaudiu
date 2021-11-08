@@ -1,4 +1,5 @@
 from Domain.rezervare import getId, getNume, getClasa, getPret, getCheckin, creeazaRezervare
+from Logic.Ieftinire import IeftinirePret
 from Logic.clasaSuperioara import UpgradeClasa
 from Logic.crud import adaugaRezervare, getById, stergeRezervare
 
@@ -30,4 +31,12 @@ def testClasaSuperioara():
     lista = adaugaRezervare('1', 'Prigoana', 'economy', 200, 'Da', [])
     rezervare1= creeazaRezervare('1', 'Prigoana', 'economy plus', 200, 'Da')
     lista= UpgradeClasa(lista,'Prigoana')
+    assert rezervare1 in lista
+
+
+def testIeftinereProcent():
+    '''testeaza daca ieftineste corect cu un procent'''
+    lista = adaugaRezervare('1', 'Prigoana', 'economy', 200, 'Da', [])
+    rezervare1= creeazaRezervare('1', 'Prigoana', 'economy', 180, 'Da')
+    lista= IeftinirePret(lista,10)
     assert rezervare1 in lista
