@@ -1,5 +1,6 @@
 from Domain.rezervare import getId, getNume, getClasa, getPret, getCheckin, creeazaRezervare
 from Logic.Ieftinire import IeftinirePret
+from Logic.cerinte import pretMaxim
 from Logic.clasaSuperioara import UpgradeClasa
 from Logic.crud import adaugaRezervare, getById, stergeRezervare, modificaRezervare
 
@@ -57,3 +58,13 @@ def testIeftinereProcent():
     rezervare1= creeazaRezervare('1', 'Prigoana', 'economy', 180, 'Da')
     lista= IeftinirePret(lista,10)
     assert rezervare1 in lista
+
+
+def testPretMaxim():
+    '''testeaza daca gaseste corect preturile maxime al fiecarei clase'''
+    lista = adaugaRezervare('1', 'Prigoana', 'economy', 200, 'Da', [])
+    lista = adaugaRezervare('2', 'Claudiu', 'business', 250, 'Nu', lista)
+    lista = adaugaRezervare('3', 'Claudiu', 'economy', 100, 'Da', lista)
+    lista = adaugaRezervare('4', 'Alex', 'economy plus', 50, 'Da', lista)
+    lista = adaugaRezervare('5', 'Pop', 'economy', 220, 'Da', lista)
+    assert pretMaxim(lista)== {'economy': 220, 'business': 250, 'economy plus': 50}
