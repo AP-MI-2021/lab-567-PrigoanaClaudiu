@@ -1,7 +1,7 @@
 from Domain.rezervare import getCheckin, creeazaRezervare, getPret, getNume, getId, getClasa
 
 
-def IeftinirePret(lista,procent):
+def IeftinirePret(lista,procent,undoList,redoList):
     if not (0 < procent < 100):
         raise ValueError('Procentajul trebuie sa fie intre 0 si 100.')
     listaNoua=[]
@@ -17,4 +17,6 @@ def IeftinirePret(lista,procent):
                 getCheckin(rezervare)
             )
             listaNoua.append(rezervareNoua)
+    undoList.append(lista)
+    redoList.clear()
     return listaNoua

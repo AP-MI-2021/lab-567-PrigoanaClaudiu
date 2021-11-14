@@ -1,5 +1,5 @@
-from Tests.testCrud import testAdaugaRezervare, testStergeRezervare, testClasaSuperioara, testIeftinereProcent, \
-    testgetById, testModificare, testPretMaxim
+from Tests.testLogic import testAdaugaRezervare, testStergeRezervare, testClasaSuperioara, testIeftinereProcent, \
+    testgetById, testModificare, testPretMaxim, testOrdo
 from Tests.testDomain import testDomain
 
 
@@ -12,3 +12,4 @@ def alltests():
     testgetById()
     testModificare()
     testPretMaxim()
+    testOrdo()

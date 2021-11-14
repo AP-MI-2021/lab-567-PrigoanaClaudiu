@@ -1,7 +1,7 @@
 from Domain.rezervare import getNume, getClasa, creeazaRezervare, getId, getPret, getCheckin
 
 
-def UpgradeClasa(lista, nume):
+def UpgradeClasa(lista, nume, undoList, redoList):
     '''
     Trece clasa la una superioara
     :param lista: lista de rezervari
@@ -31,4 +31,6 @@ def UpgradeClasa(lista, nume):
                 getCheckin(rezervare)
             )
             listaNoua.append(rezervareNoua)
+    undoList.append(lista)
+    redoList.clear()
     return listaNoua
