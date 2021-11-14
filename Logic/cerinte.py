@@ -1,4 +1,4 @@
-from Domain.rezervare import getClasa, getPret
+from Domain.rezervare import getClasa, getPret, getNume
 
 
 def pretMaxim(lista):
@@ -17,3 +17,19 @@ def pretMaxim(lista):
         else:
                 preturi[clasa]=pret
     return preturi
+
+
+def ordo(lista):
+    '''ordoneaza rezervarile descresc dupa pret'''
+    return sorted(lista, key=lambda rezervare: getPret(rezervare), reverse=1)
+
+
+def sumaFiecareNume(lista):
+    '''afiseaza suma preturilor fiecarui nume'''
+    for rezervare in lista:
+        numele = getNume(rezervare)
+        s=0
+        for rezervare in lista:
+            if numele == getNume(rezervare):
+                s=getPret(rezervare) + s
+        print(f"{numele}: {s}")

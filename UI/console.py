@@ -1,21 +1,27 @@
 from Domain.rezervare import toString
 from Logic.Ieftinire import IeftinirePret
-from Logic.cerinte import pretMaxim
+from Logic.cerinte import pretMaxim, ordo, sumaFiecareNume
 from Logic.clasaSuperioara import UpgradeClasa
 from Logic.crud import adaugaRezervare, modificaRezervare, stergeRezervare
+from UI.commandline import commandLine
 
 
 def printMenu():
     '''
     meniul afisat
     '''
-    print("1.Adauga, sterge sau modifica o rezervare.")
-    print("2.Trecerea la o clasa superioara a unui client, dupa nume.")
-    print("3.Ieftinirea tuturor rezervărilor la care s-a făcut checkin cu un procentaj citit.")
-    print("4.Determinarea prețului maxim pentru fiecare clasă.")
+    print("1. Adauga, sterge sau modifica o rezervare.")
+    print("2. Trecerea la o clasa superioara a unui client, dupa nume.")
+    print("3. Ieftinirea tuturor rezervărilor la care s-a făcut checkin cu un procentaj citit.")
+    print("4. Determinarea prețului maxim pentru fiecare clasă.")
+    print("5. Ordonarea rezervărilor descrescător după preț.")
+    print("6. Afișarea sumelor prețurilor pentru fiecare nume")
+    print("7. Command_line.")
 
-    print("a.Afiseaza toate rezervarile.")
-    print("x.Iesire.")
+    print("u. Undo.")
+    print("r. Redo.")
+    print("a. Afiseaza toate rezervarile.")
+    print("x. Iesire.")
 
 
 def uiAdaugaRezervare(lista):
@@ -107,7 +113,13 @@ def runMenu(lista):
                 print("Eroare",vee)
         elif optiune == '4':
             print(pretMaxim(lista))
+        elif optiune == '5':
+            lista=ordo(lista)
+        elif optiune == '6':
+            sumaFiecareNume(lista)
 
+        elif optiune == '7':
+            lista= commandLine(lista)
         elif optiune == 'x':
             break
         else:
