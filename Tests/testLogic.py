@@ -1,6 +1,6 @@
 from Domain.rezervare import getId, getNume, getClasa, getPret, getCheckin, creeazaRezervare
 from Logic.Ieftinire import IeftinirePret
-from Logic.cerinte import pretMaxim, ordo
+from Logic.cerinte import pretMaxim, ordo, sumaFiecareNume
 from Logic.clasaSuperioara import UpgradeClasa
 from Logic.crud import adaugaRezervare, getById, stergeRezervare, modificaRezervare
 
