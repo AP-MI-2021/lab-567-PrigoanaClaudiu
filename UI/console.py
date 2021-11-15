@@ -36,7 +36,7 @@ def uiAdaugaRezervare(lista, undoList, redoList):
         pret=float(input("Dati pretul: "))
         checkin=input("S-a facut checkin-ul? Da/Nu: ")
 
-        rezultat = adaugaRezervare(id, nume, clasa, pret, checkin, lista)
+        rezultat = adaugaRezervare(id, nume, clasa, pret, checkin, lista,undoList,redoList)
         undoList.append(lista)
         redoList.clear()
         return rezultat
@@ -52,7 +52,7 @@ def uiStergeRezervare(lista, undoList, redoList):
     '''
     try:
         id=input("Dati id-ul rezervarii ce trebuie sterse: ")
-        rezultat = stergeRezervare(id,lista)
+        rezultat = stergeRezervare(id,lista,undoList,redoList)
         undoList.append(lista)
         redoList.clear()
         return rezultat
@@ -73,7 +73,7 @@ def uiModificaRezervare(lista, undoList, redoList):
         pret = float(input("Dati noul pret: "))
         checkin = input("S-a facut checkin-ul? Da/Nu: ")
 
-        rezultat = modificaRezervare(id,nume,clasa,pret,checkin,lista)
+        rezultat = modificaRezervare(id,nume,clasa,pret,checkin,lista,undoList,redoList)
         undoList.append(lista)
         redoList.clear()
         return rezultat

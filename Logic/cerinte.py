@@ -36,3 +36,19 @@ def sumaFiecareNume(lista):
                 s=getPret(rezervare) + s
         print(f"{numele}: {s}")
 
+
+def do_undo(lista,undoList,redoList):
+    if undoList:
+        topUndo=undoList.pop()
+        redoList.append(topUndo)
+        return topUndo
+    return lista
+
+
+def do_redo(lista,undoList,redoList):
+    if redoList:
+        topredo=redoList.pop()
+        undoList.append(topredo)
+        return topredo
+    return lista
+

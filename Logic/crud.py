@@ -1,7 +1,7 @@
 from Domain.rezervare import creeazaRezervare, getId
 
 
-def adaugaRezervare(id,nume,clasa,pret,checkin, lista):
+def adaugaRezervare(id,nume,clasa,pret,checkin, lista, undoList, redoList):
     '''
     adauga o noua rezervare
     :param id: id ul rezervarii
@@ -13,10 +13,12 @@ def adaugaRezervare(id,nume,clasa,pret,checkin, lista):
     :return: lista cu noua rezervare adaugata
     '''
     rezervare= creeazaRezervare(id, nume, clasa, pret, checkin)
+    undoList.append(lista)
+    redoList.clear()
     return lista + [rezervare]
 
 
-def stergeRezervare(id, lista):
+def stergeRezervare(id, lista, undoList, redoList):
     '''
     sterge rezervari cu un anumit id din lista
     :param id: id-ul rezervarii de sters
@@ -26,7 +28,7 @@ def stergeRezervare(id, lista):
     return [rezervare for rezervare in lista if getId(rezervare) != id]
 
 
-def modificaRezervare(id,nume,clasa,pret,checkin, lista):
+def modificaRezervare(id,nume,clasa,pret,checkin, lista, undoList, redoList):
     '''
     modifica o rezervare
     :param id: id ul ei
@@ -44,6 +46,8 @@ def modificaRezervare(id,nume,clasa,pret,checkin, lista):
             listaNoua.append(rezervareNoua)
         else:
             listaNoua.append(rezervare)
+    undoList.append(lista)
+    redoList.clear()
     return listaNoua
 
 
