@@ -12,6 +12,9 @@ def adaugaRezervare(id,nume,clasa,pret,checkin, lista, undoList, redoList):
     :param lista: lista cu toate rezervarile
     :return: lista cu noua rezervare adaugata
     '''
+    for rez in lista:
+        if getId(rez) == id:
+            raise ValueError("Exista deja o rezervare cu acest id")
     rezervare= creeazaRezervare(id, nume, clasa, pret, checkin)
     undoList.append(lista)
     redoList.clear()
@@ -25,7 +28,11 @@ def stergeRezervare(id, lista, undoList, redoList):
     :param lista: lista cu rezervari
     :return: o lista de rezervari cu id-ul diferit de id
     '''
-    return [rezervare for rezervare in lista if getId(rezervare) != id]
+    lista_noua = []
+    for rezervare in lista:
+        if getId(rezervare) != id:
+            lista_noua.append(rezervare)
+    return lista_noua
 
 
 def modificaRezervare(id,nume,clasa,pret,checkin, lista, undoList, redoList):

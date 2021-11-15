@@ -153,7 +153,7 @@ def runMenu(lista):
             except ValueError as vee:
                 print("Eroare",vee)
         elif optiune == '4':
-            print(pretMaxim(lista))
+            print(pretMaxim(lista,undoList,redoList))
         elif optiune == '5':
             lista=ordo(lista,undoList,redoList)
         elif optiune == '6':
